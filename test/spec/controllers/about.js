@@ -1,22 +1,17 @@
 'use strict';
 
-describe('Controller: AboutCtrl', function () {
-
-  // load the controller's module
-  beforeEach(module('mytodoApp'));
-
-  var AboutCtrl,
-    scope;
-
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    AboutCtrl = $controller('AboutCtrl', {
-      $scope: scope
-    });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
-});
+/**
+ * @ngdoc function
+ * @name mytodoApp.controller:AboutCtrl
+ * @description
+ * # AboutCtrl
+ * Controller of the mytodoApp
+ */
+angular.module('mytodoApp')
+    .controller('AboutCtrl', ["$scope", function ($scope) {
+        $scope.awesomeThings = [
+            'HTML5 Boilerplate',
+            'AngularJS',
+            'Karma'
+        ];
+    }]);
