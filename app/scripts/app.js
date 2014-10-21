@@ -8,31 +8,23 @@
  *
  * Main module of the application.
  */
-angular
-  .module('mytodoApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-        'ui.sortable',
-        'LocalStorageModule'
-  ])
-    .config(['localStorageServiceProvider', function(localStorageServiceProvider){
+(function() {
+    var app = angular.module('mytodoApp', ['LocalStorageModule','ngCookies','ngResource','ngSanitize','ngTouch','ngRoute','ui.sortable']);
+    app.config(['localStorageServiceProvider', function (localStorageServiceProvider) {
         localStorageServiceProvider.setPrefix('ls');
-    }])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    }]);
+    app.config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
+            .when('/about', {
+                templateUrl: 'views/about.html',
+                controller: 'AboutCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });
+}.call(this));
